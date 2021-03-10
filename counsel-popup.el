@@ -28,6 +28,7 @@
 ;;; Code:
 
 (require 'counsel-popup-ag)
+(require 'counsel-popup-rg)
 
 (defgroup counsel-popup nil
   "Interactive versions of `counsel' commands."

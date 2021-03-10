@@ -147,6 +147,7 @@ The third arg HISTORY, if non-nil, specifies a history."
 
 (transient-define-prefix counsel-popup-ag ()
   "Search popup using `counsel-ag'."
+  :man-page "ag"
   ["Output options"
    (counsel-popup-ag:-A)
    (counsel-popup-ag:-B)
