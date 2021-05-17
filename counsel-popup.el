@@ -29,6 +29,7 @@
 
 (require 'counsel-popup-ag)
 (require 'counsel-popup-rg)
+(require 'counsel-popup-grep)
 
 (defgroup counsel-popup nil
   "Interactive versions of `counsel' commands."
