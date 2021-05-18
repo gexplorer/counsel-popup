@@ -142,8 +142,9 @@ The third arg HISTORY, if non-nil, specifies a history."
 (defun counsel-popup-ag-search (directory &optional string)
   "Search using `counsel-ag' in a given DIRECTORY for STRING."
   (interactive "DDirectory: ")
-  (let ((search-args (counsel-popup--map-args (transient-args 'counsel-popup-ag))))
-    (counsel-ag string directory search-args)))
+  (let* ((search-args (counsel-popup--map-arg-list (transient-args 'counsel-popup-ag)))
+         (counsel-ag-base-command `(,@counsel-ag-base-command ,@search-args)))
+    (counsel-ag string directory)))
 
 (transient-define-prefix counsel-popup-ag ()
   "Search popup using `counsel-ag'."

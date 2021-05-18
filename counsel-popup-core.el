@@ -25,11 +25,8 @@
 
 (defun counsel-popup--map-args (args)
   "Convert ARGS to a string of args.
-
 For each arg:
-
 - If string, then return it unmodified.
-
 - If list '(prefix value1 value2...) return all values prepend with the prefix."
   (mapconcat
    (lambda (arg)
@@ -40,6 +37,22 @@ For each arg:
        arg))
    args
    " "))
+
+(defun counsel-popup--map-arg-list (args)
+  "Convert ARGS to a list of args.
+For each arg:
+- If string, then return it unmodified.
+- If list '(prefix value1 value2...) return all values prepend with the prefix."
+  (seq-reduce
+   (lambda (acc arg)
+     (if (listp arg)
+         (let ((prefix (car arg))
+               (values (cdr arg)))
+           `(,@acc ,@(mapcar (lambda (value) (concat prefix value)) values)))
+       `(,@acc ,arg))
+     )
+   args
+   '()))
 
 (defclass counsel-popup-file-types (transient-infix) ()
   "Class used for the file types argument.

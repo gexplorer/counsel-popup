@@ -30,6 +30,7 @@
 (require 'counsel-popup-ag)
 (require 'counsel-popup-rg)
 (require 'counsel-popup-grep)
+(require 'counsel-popup-git-grep)
 
 (defgroup counsel-popup nil
   "Interactive versions of `counsel' commands."
